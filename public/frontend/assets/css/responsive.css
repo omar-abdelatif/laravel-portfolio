@@ -1,0 +1,82 @@
+@media (min-width: 1400px) {
+    /* ! Navbar ! */
+    .navbar>.container{
+        max-width: 1700px;
+    }
+    /* ! Hero ! */
+    .hero-img{
+        margin-top: 120px !important;
+    }
+    .hero-img img{
+        width: 350px !important;
+    }
+}
+@media (max-width: 1200px) {  }
+@media (max-width: 1024px){  }
+@media (max-width: 992px) {
+    /* ! Navabar ! */
+    .menu{
+        display: block !important;
+    }
+    .nav-item{
+        text-align: left;
+        margin-bottom: 10px;
+        margin-left: 0 !important;
+    }
+    .offcanvas{
+        width: 315px !important;
+    }
+}
+@media (max-width: 768px) {}
+@media (max-width: 576px) {
+    /* ! Blogs page ! */
+    .modal-header{
+        position: relative;
+        left: 30px;
+        margin-bottom: 10px;
+    }
+    /* ! About Page ! */
+    .about-img{
+        height: auto;
+    }
+    .about-info ul{
+        flex-direction: column !important;
+    }
+    /* ! Testmonials ! */
+}
+@media (max-width: 480px){
+    /* ! Hero Page ! */
+    .hero-title{
+        margin-top: 50px !important;
+        margin-bottom: 50px !important;
+    }
+}
+@media (max-width: 414px){
+    /* ! NavBar ! */
+    .navbar-brand{
+        font-size: x-large;
+        letter-spacing: 2px;
+    }
+    .nav-link {
+        padding-left: 20px !important;
+    }
+    /* ! Hero Page ! */
+    .hero-page{
+        height: 77vh !important;
+    }
+    .cv{
+        margin-top: 100px !important;
+    }
+    .cv a{
+        border-radius: 15px;
+        padding: 10px;
+        width: 200px;
+        line-height: 27px;
+    }
+    /* ! Blog Page ! */
+    .blog-item{
+        margin-bottom: 20px;
+    }
+}
+@media (max-width: 375px){  }
+@media (max-width: 280px){  }

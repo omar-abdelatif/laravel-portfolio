@@ -1,0 +1,104 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Skills;
+use App\Models\Category;
+use Illuminate\Http\Request;
+
+class SkillsController extends Controller
+{
+    public function index()
+    {
+        $skills = Skills::all();
+        $categories = Category::all();
+        $pageTitle = 'Skills';
+        return view('Skills.index', compact('pageTitle', 'skills', 'categories'));
+    }
+    public function store(Request $request)
+    {
+        $validated = $request->validate([
+            'img' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
+            'category' => 'required',
+        ]);
+        if ($request->hasFile('img')) {
+            $upload = $request->file('img');
+            $name = time() . '.' . $upload->getClientOriginalExtension();
+            $destinationPath = public_path('assets/imgs/skills/');
+            $upload->move($destinationPath, $name);
+        } elseif (!$request->file('img')) {
+            $name = 'download.png';
+        }
+        $category = Category::where('title', $validated['category'])->first();
+        $store = Skills::create([
+            'category' => $validated['category'],
+            'img' => $name,
+            'category_id' => $category->id,
+        ]);
+        if ($store) {
+            return redirect()->route('skills.index')->with('success', 'Skill Inserted Successfully');
+        }
+        return redirect()->route('skills.index')->withErrors($validated);
+    }
+    public function update(Request $request)
+    {
+<<<<<<< HEAD
+        $validated = 'Error Happen';
+=======
+        $validated = $request->validate([
+            'img' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
+            'category' => 'required'
+        ]);
+>>>>>>> 7a2b1b6ea08927ff26409929dafd2f9fb4874069
+        $skills = Skills::find($request->id);
+        if ($skills) {
+            if ($request->hasFile('img') && $skills->img !== null) {
+                $oldImagePath = public_path('assets/imgs/skills/' . $skills->img);
+                if (file_exists($oldImagePath)) {
+                    unlink($oldImagePath);
+                }
+            }
+            if ($request->hasFile('img')) {
+                $upload = $request->file('img');
+                $name = time() . '.' . $upload->getClientOriginalExtension();
+                $destinationPath = public_path('assets/imgs/skills/');
+                $upload->move($destinationPath, $name);
+                $skills->img = $name;
+<<<<<<< HEAD
+            } elseif (!$request->file('img')) {
+                $name = 'download.png';
+            }
+            $skills->category = $request->category;
+            $update = $skills->save();
+            if ($update) {
+                return redirect()->route('skills.index')->withSuccess('Updated Successfully');
+            }
+            return redirect()->route('skills.index')->withErrors($validated);
+        }
+=======
+            }
+            $skills->category = $validated['category'];
+            $update = $skills->save();
+            if ($update) {
+                return redirect()->route('skills.index')->with('success', 'Skills Updated Successfully');
+            }
+        }
+        return redirect()->route('skills.index')->withErrors($validated);
+>>>>>>> 7a2b1b6ea08927ff26409929dafd2f9fb4874069
+    }
+    public function destroy($id)
+    {
+        $skills = Skills::find($id);
+        if ($skills) {
+            if ($skills->img !== null) {
+                $oldPath = public_path('assets/imgs/skills/' . $skills->img);
+                if (file_exists($oldPath)) {
+                    unlink($oldPath);
+                }
+            }
+            $skills->delete();
+            return redirect()->route('skills.index')->with('success', 'Skill Deleted Successfully');
+        }
+        return redirect()->route('skills.index')->withErrors('Error Happen');
+    }
+}

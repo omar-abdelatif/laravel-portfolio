@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base href="./">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="shortcut icon" href={{asset('assets/imgs/logo/favicon.png')}} type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<<<<<<< HEAD
+    @vite('resources/sass/app.scss')
+    <title>
+        @yield('title', 'Omar Abdelatif')
+    </title>
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/@coreui/coreui-pro@4.6.4/dist/css/coreui.min.css">
+    <link rel="stylesheet" href="{{asset('assets/css/custom.css')}}">
+=======
+    <title>@yield('title', 'Omar Abdelatif')</title>
+    <link rel="stylesheet" href="https://unpkg.com/@coreui/coreui-pro@4.6.0-beta.0/dist/css/coreui.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.4.2/css/all.min.css">
+    <meta name="theme-color" content="#ffffff">
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+>>>>>>> 7a2b1b6ea08927ff26409929dafd2f9fb4874069
+</head>
+<body>
+    <div class="sidebar sidebar-dark sidebar-fixed" id="sidebar">
+        <div class="sidebar-brand d-none d-md-flex">
+            <h1 class="text-center sidebar-brand-full">Dashboard</h1>
+            <img src={{asset('assets/imgs/logo/favicon.png')}} width="50" alt="logo" class="text-center sidebar-brand-narrow">
+        </div>
+        @include('layouts.navigation')
+        <button class="sidebar-toggler" type="button" data-coreui-toggle="unfoldable"></button>
+    </div>
+    <div class="wrapper d-flex flex-column min-vh-100 bg-light">
+        @include('layouts.header')
+        @yield('header')
+        <div class="body flex-grow-1 px-3">
+<<<<<<< HEAD
+            <div class="container-fluid">
+=======
+            <div class="container">
+>>>>>>> 7a2b1b6ea08927ff26409929dafd2f9fb4874069
+                @yield('content')
+            </div>
+        </div>
+        @include('layouts.footer')
+    </div>
+<<<<<<< HEAD
+    <script src="https://unpkg.com/@coreui/coreui-pro@4.6.4/dist/js/coreui.bundle.min.js"></script>
+=======
+    <script src="https://unpkg.com/@coreui/coreui-pro@4.6.0-beta.0/dist/js/coreui.bundle.js"></script>
+    <script src="https://unpkg.com/@fortawesome/fontawesome-free@6.4.2/js/all.min.js"></script>
+>>>>>>> 7a2b1b6ea08927ff26409929dafd2f9fb4874069
+    <script src="{{asset('assets/js/custom.js')}}"></script>
+</body>
+</html>
