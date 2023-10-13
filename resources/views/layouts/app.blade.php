@@ -23,6 +23,7 @@
         <button class="sidebar-toggler" type="button" data-coreui-toggle="unfoldable"></button>
     </div>
     <div class="wrapper d-flex flex-column min-vh-100 bg-light">
+        @include('layouts.header')
         @yield('header')
         <div class="container-fluid">
             @yield('content')
@@ -30,7 +31,6 @@
     </div>
     @include('layouts.footer')
     <script src="https://unpkg.com/@coreui/coreui-pro@4.6.4/dist/js/coreui.bundle.min.js"></script>
-    <script src="https://unpkg.com/@coreui/coreui-pro@4.6.0-beta.0/dist/js/coreui.bundle.js"></script>
     <script src="https://unpkg.com/@fortawesome/fontawesome-free@6.4.2/js/all.min.js"></script>
     <script src="{{asset('assets/js/custom.js')}}"></script>
 </body>

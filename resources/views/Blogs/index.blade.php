@@ -1,9 +1,7 @@
 @extends('layouts.app')
 @section('title', 'Omar Abdelatif | ' . $pageTitle)
 @section('header')
-<header class="header header-sticky d-block">
-        @include('layouts.header')
-        <div class="header-divider"></div>
+    <header class="header header-sticky d-block">
         <section class="content-header">
             <div class="container-fluid">
                 <div class="row">
