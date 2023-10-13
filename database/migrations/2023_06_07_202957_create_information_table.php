@@ -20,6 +20,12 @@ return new class extends Migration
             $table->bigInteger('phone_number');
             $table->string('email', 100)->unique();
             $table->string('address')->nullable();
+            $table->string('img');
+            $table->string('cv');
+            $table->string('facebook_link');
+            $table->string('github_link');
+            $table->string('whatsapp_link');
+            $table->string('linkedin_link');
             $table->timestamps();
         });
     }

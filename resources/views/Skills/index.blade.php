@@ -2,6 +2,8 @@
 @section('title', 'Omar Abdelatif | ' . $pageTitle)
 @section('header')
     <header class="header header-sticky mb-4 d-block">
+        @include('layouts.header')
+        <div class="header-divider"></div>
         <section class="content-header">
             <div class="container-fluid">
                 <div class="row">
@@ -102,7 +104,7 @@
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Update Tag {{$skill->title}}</h5>
+                                        <h5 class="modal-title" id="exampleModalLabel">Update Skill {{$skill->img}}</h5>
                                         <button type="button" class="btn-close" data-coreui-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body bg-dark">
@@ -112,7 +114,7 @@
                                             <div class="row">
                                                 <div class="col-lg-12">
                                                     <div class="form-group text-center mb-3">
-                                                        <label for="title" class="text-white">
+                                                        <label for="img" class="text-white">
                                                             <b>Image</b>
                                                         </label>
                                                         <input type="file" name="img" id="img" class="form-control text-center" value="{{$skill->img}}">

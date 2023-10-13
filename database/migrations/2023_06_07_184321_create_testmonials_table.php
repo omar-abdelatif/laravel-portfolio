@@ -15,6 +15,8 @@ return new class extends Migration
         Schema::create('testmonials', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->id();
+            $table->string('client_name');
+            $table->string('title');
             $table->string('img');
             $table->timestamps();
         });

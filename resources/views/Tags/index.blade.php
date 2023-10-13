@@ -2,6 +2,8 @@
 @section('title', 'Omar Abdelatif | ' . $pageTitle)
 @section('header')
     <header class="header header-sticky mb-4 d-block">
+        @include('layouts.header')
+        <div class="header-divider"></div>
         <section class="content-header">
             <div class="container-fluid">
                 <div class="row">
@@ -74,11 +76,7 @@
                         <td>{{$tag->title}}</td>
                         <td>
                             {{-- edit --}}
-<<<<<<< HEAD
-                            <button type="button" class="btn btn-warning" data-coreui-toggle="modal" data-coreui-target="#edit_tag{{$tag->id}}">
-=======
                             <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#edit_tag{{$tag->id}}">
->>>>>>> 7a2b1b6ea08927ff26409929dafd2f9fb4874069
                                 <b>
                                     Edit
                                 </b>
@@ -88,11 +86,8 @@
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h5 class="modal-title" id="exampleModalLabel">Update Tag {{$tag->title}}</h5>
-<<<<<<< HEAD
                                             <button type="button" class="btn-close" data-coreui-dismiss="modal" aria-label="Close"></button>
-=======
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
->>>>>>> 7a2b1b6ea08927ff26409929dafd2f9fb4874069
                                         </div>
                                         <div class="modal-body bg-dark">
                                             <form action="{{route('tags.update')}}" method="post">

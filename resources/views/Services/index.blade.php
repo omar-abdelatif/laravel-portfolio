@@ -2,6 +2,8 @@
 @section('title', 'Omar Abdelatif | ' . $pageTitle)
 @section('header')
     <header class="header header-sticky mb-4 d-block">
+        @include('layouts.header')
+        <div class="header-divider"></div>
         <section class="content-header">
             <div class="container-fluid">
                 <div class="row">

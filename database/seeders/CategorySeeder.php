@@ -18,12 +18,7 @@ class CategorySeeder extends Seeder
             'BackEnd',
             'FullStack',
             'Ui/Ux',
-            'Design',
             'Mobile',
-            'Business',
-            'Ios',
-            'Android',
-            'React Native',
             'Other',
         ];
         foreach ($categoryTitles as $catTitle) {

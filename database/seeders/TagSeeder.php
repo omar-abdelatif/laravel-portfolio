@@ -24,6 +24,7 @@ class TagSeeder extends Seeder
             'Jquery',
             'Tailwind',
             'Express',
+            'React Native',
         ];
         foreach ($tagTitles as $tagTitle) {
             Tags::create([

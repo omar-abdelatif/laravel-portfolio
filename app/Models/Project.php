@@ -23,12 +23,4 @@ class Project extends Model
     {
         return $this->hasOne(Category::class);
     }
-    public function tags()
-    {
-        return $this->hasMany(Tags::class);
-    }
-    public function categories()
-    {
-        return $this->hasOne(Category::class);
-    }
 }

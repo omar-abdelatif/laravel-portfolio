@@ -15,11 +15,12 @@ return new class extends Migration
         Schema::create('blogs', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->id();
+            $table->string('author');
             $table->string('title');
             $table->string('img');
             $table->string('content');
             $table->string('category');
-            $table->integer('category_id')->index()->references('id')->on('category')->onUpdate('cascade')->onDelete('cascade');
+            $table->integer('category_id')->index();
             $table->timestamps();
         });
     }

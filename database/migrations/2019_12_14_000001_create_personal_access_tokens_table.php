@@ -14,8 +14,7 @@ return new class extends Migration
         Schema::create('personal_access_tokens', function (Blueprint $table) {
             $table->engine = 'MyISAM';
             $table->id();
-            $table->morphs('tokenable');
-            $table->integer('id');
+            // $table->morphs('tokenable');
             $table->string('tokenable_type', 191)->index();
             $table->string('name');
             $table->string('token', 64)->unique();

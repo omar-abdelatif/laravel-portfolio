@@ -51,7 +51,7 @@ Route::group(['prefix' => 'admin'], function () {
         //! Testmonials Routes
         Route::get('all_testmonials', [TestmonialsController::class, 'index'])->name('testmonials.index');
         Route::post('testmonials_store', [TestmonialsController::class, 'store'])->name('testmonials.store');
-        Route::get('testmonials_delete/{id}', [TestmonialsController::class, 'destroy'])->name('testmonials.delete');
+        Route::get('testmonials_delete/{id}', [TestmonialsController::class, 'destroy'])->name('testmonials.destroy');
         Route::post('testmonials_update', [TestmonialsController::class, 'update'])->name('testmonials.update');
         //! Blogs Routes
         Route::get('all_blogs', [BlogController::class, 'index'])->name('blogs.index');
@@ -71,7 +71,7 @@ Route::group(['prefix' => 'admin'], function () {
         //! Information Routes
         Route::get('all_infos', [InformationController::class, 'index'])->name('infos.index');
         Route::post('infos_store', [InformationController::class, 'store'])->name('infos.store');
-        Route::get('infos_delete/{id}', [InformationController::class, 'delete'])->name('infos.delete');
+        Route::get('infos_delete/{id}', [InformationController::class, 'destroy'])->name('infos.destroy');
         Route::post('infos_update', [InformationController::class, 'update'])->name('infos.update');
         //! Pages Routes
         Route::get('all_pages', [PagesController::class, 'index'])->name('pages.index');

@@ -16,9 +16,10 @@ class InformationController extends Controller
     }
     public function store(Request $request)
     {
-        $validated = $request->validate(["name" => 'required|string',
+        $validated = $request->validate([
+            "name" => 'required|string',
             'age' => 'required|numeric|integer',
-            'address' => 'required|alpha_num|max:100',
+            'address' => 'required',
             'phone_number' => 'required|numeric',
             'email' => 'required|email',
             'facebook_link' => 'required',
@@ -30,10 +31,8 @@ class InformationController extends Controller
         if ($request->hasFile('img') && $request->file('img')->isValid()) {
             $upload = $request->file('img');
             $name = time() . '.' . $upload->getClientOriginalExtension();
-            $destinationPath = public_path('assets/imgs/information/');
+            $destinationPath = public_path('assets/imgs/info/');
             $upload->move($destinationPath, $name);
-        } elseif (!$request->file('img')) {
-            $name = 'download.png';
         }
         if ($request->hasFile('cv')) {
             $upload = $request->file('cv');
@@ -54,18 +53,6 @@ class InformationController extends Controller
             'img' => $name,
             'cv' => $cv
         ]);
-        $store = Information::create([
-            'name' => $validated['name'],
-            'age' => $validated['age'],
-            'address' => $validated['address'],
-            'phone_number' => $validated['phone_number'],
-            'email' => $validated['email'],
-            'facebook_link' => $validated['facebook_link'],
-            'github_link' => $validated['github_link'],
-            'whasapp_link' => $validated['whatsapp_link'],
-            'linkedin_link' => $validated['linkedin_link'],
-            'img' => $name
-        ]);
         if ($store) {
             return redirect()->route('infos.index')->withSuccess('Inserted Successfully');
         }
@@ -83,55 +70,47 @@ class InformationController extends Controller
                     unlink($oldPath);
                 }
             }
-            //! Delete Old PDF
+            //! Upload New Image
+            if (
+                $request->hasFile('img') && $request->file('img')->isValid()
+            ) {
+                $upload = $request->file('img');
+                $name = time() . '.' . $upload->getClientOriginalExtension();
+                $destinationPath = public_path('assets/imgs/info/');
+                $upload->move($destinationPath, $name);
+                $infos->img = $name;
+            } elseif (!$request->file('img')) {
+                $name = 'download.png';
+            }
+            //! Delete Old CV
             if ($request->hasFile('cv') && $infos->cv !== null) {
                 $oldPath = public_path('assets/files/cv/' . $infos->cv);
                 if (file_exists($oldPath)) {
                     unlink($oldPath);
                 }
             }
-            $info = Information::find($request->id);
-            if ($info) {
-                //! Delete Old Image
-                if ($request->hasFile('img') && $info->img !== null) {
-                    $oldPath = public_path('assets/imgs/information/' . $info->img);
-                    if (file_exists($oldPath)) {
-                        unlink($oldPath);
-                    }
-                }
-                //! Upload New Image
-                if ($request->hasFile('img') && $request->file('img')->isValid()) {
-                    $upload = $request->file('img');
-                    $name = time() . '.' . $upload->getClientOriginalExtension();
-                    $destinationPath = public_path('assets/imgs/info/');
-                    $upload->move($destinationPath, $name);
-                    $infos->img = $name;
-                } elseif (!$request->file('img')) {
-                    $name = 'download.png';
-                }
-                //! Upload New CV
-                if ($request->hasFile('cv') && $request->file('cv')->isValid()) {
-                    $upload = $request->file('cv');
-                    $cv = time() . '.' . $upload->getClientOriginalExtension();
-                    $destinationPath = public_path('assets/files/cv/');
-                    $upload->move($destinationPath, $cv);
-                    $infos->cv = $cv;
-                }
-                $infos->name = $request->name;
-                $infos->email = $request->email;
-                $infos->phone_number = $request->phone_number;
-                $infos->address = $request->address;
-                $infos->age = $request->age;
-                $infos->facebook_link = $request->facebook_link;
-                $infos->github_link = $request->github_link;
-                $infos->whasapp_link = $request->whasapp_link;
-                $infos->linkedin_link = $request->linkedin_link;
-                $update = $infos->save();
-                if ($update) {
-                    return redirect()->route('infos.index')->withSuccess('Updated Successfully');
-                } else {
-                    return redirect()->route('infos.index')->withErrors('Error Happen');
-                }
+            //! Upload New CV
+            if ($request->hasFile('cv') && $request->file('cv')->isValid()) {
+                $upload = $request->file('cv');
+                $cv = time() . '.' . $upload->getClientOriginalExtension();
+                $destinationPath = public_path('assets/files/cv/');
+                $upload->move($destinationPath, $cv);
+                $infos->cv = $cv;
+            }
+            $infos->name = $request->name;
+            $infos->email = $request->email;
+            $infos->phone_number = $request->phone_number;
+            $infos->address = $request->address;
+            $infos->age = $request->age;
+            $infos->facebook_link = $request->facebook_link;
+            $infos->github_link = $request->github_link;
+            $infos->whasapp_link = $request->whasapp_link;
+            $infos->linkedin_link = $request->linkedin_link;
+            $update = $infos->save();
+            if ($update) {
+                return redirect()->route('infos.index')->withSuccess('Updated Successfully');
+            } else {
+                return redirect()->route('infos.index')->withErrors('Error Happen');
             }
         }
     }
@@ -140,7 +119,13 @@ class InformationController extends Controller
         $info = Information::find($id);
         if ($info) {
             if ($info->img !== null) {
-                $oldPath = public_path('assets/imgs/information/' . $info->img);
+                $oldPath = public_path('assets/imgs/info/' . $info->img);
+                if (file_exists($oldPath)) {
+                    unlink($oldPath);
+                }
+            }
+            if ($info->cv !== null) {
+                $oldPath = public_path('assets/files/cv/' . $info->cv);
                 if (file_exists($oldPath)) {
                     unlink($oldPath);
                 }

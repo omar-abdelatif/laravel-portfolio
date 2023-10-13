@@ -38,19 +38,16 @@ class ProjectController extends Controller
             $name = 'download.png';
         }
         $category = Category::where('title', $validated['category'])->first();
-        $tags = Tags::where('id', $validated['tags'])->get();
         $all_tags = $validated['tags'];
         $store = Project::create([
             'title' => $validated['title'],
             'description' => $validated['description'],
             'category' => $validated['category'],
-            'tags' => implode(',', $validated['tags']),
             'tags' => implode(',', $all_tags),
             'github' => $validated['github'],
             'url' => $validated['url'],
             'img' => $name,
             'category_id' => $category->id,
-            'tag_id' => $tags->id
         ]);
         if ($store) {
             return redirect()->route('projects.index')->with('success', 'Project Inserted Successfully');

@@ -40,11 +40,7 @@ class ServiceController extends Controller
     }
     public function update(Request $request)
     {
-        $validated = $request->validate([
-            'title' => 'required',
-            'description' => 'max:500',
-            'logo' => 'image|mimes:jpeg,png,jpg,gif,webp|max:2048',
-        ]);
+        $validated = 'Error Happen';
         $service = Service::find($request->id);
         if ($service) {
             if ($request->hasFile('logo') && $service->logo !== null) {
@@ -66,8 +62,8 @@ class ServiceController extends Controller
             if ($update) {
                 return redirect()->route('services.index')->with('success', 'Service Updated Successfully');
             }
+            return redirect()->route('services.index')->withErrors($validated);
         }
-        return redirect()->route('services.index')->withErrors($validated);
     }
     public function destroy($id)
     {

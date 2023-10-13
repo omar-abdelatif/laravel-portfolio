@@ -8,14 +8,6 @@
                     <h1>{{ __('Login') }}</h1>
                     <form action="{{ route('login') }}" method="POST">
                         @csrf
-<<<<<<< HEAD
-                        <div class="input-group mb-3"><span class="input-group-text">
-                                <svg class="icon">
-                                    <use xlink:href="{{ asset('icons/coreui.svg#cil-envelope-open') }}"></use>
-                                </svg></span>
-                            <input class="form-control @error('email') is-invalid @enderror" type="text" name="email"
-                                placeholder="{{ __('Email') }}" required autofocus>
-=======
                         <div class="input-group mb-3">
                             <span class="input-group-text">
                                 <svg class="icon">
@@ -23,21 +15,7 @@
                                 </svg>
                             </span>
                             <input class="form-control @error('email') is-invalid @enderror" type="text" name="email" placeholder="{{ __('Email') }}" required autofocus>
->>>>>>> 7a2b1b6ea08927ff26409929dafd2f9fb4874069
-                            @error('email')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                            @enderror
                         </div>
-<<<<<<< HEAD
-                        <div class="input-group mb-4"><span class="input-group-text">
-                                <svg class="icon">
-                                    <use xlink:href="{{ asset('icons/coreui.svg#cil-lock-locked') }}"></use>
-                                </svg></span>
-                            <input class="form-control @error('password') is-invalid @enderror" type="password"
-                                name="password" placeholder="{{ __('Password') }}" required>
-=======
                         <div class="input-group mb-4">
                             <span class="input-group-text">
                                 <svg class="icon">
@@ -45,7 +23,6 @@
                                 </svg>
                             </span>
                             <input class="form-control @error('password') is-invalid @enderror" type="password" name="password" placeholder="{{ __('Password') }}" required>
->>>>>>> 7a2b1b6ea08927ff26409929dafd2f9fb4874069
                             @error('password')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -69,12 +46,7 @@
                             </div>
                             @if (Route::has('password.request'))
                                 <div class="col-6 text-end">
-<<<<<<< HEAD
-                                    <a href="{{ route('password.request') }}" class="btn btn-link px-0"
-                                        type="button">{{ __('Forgot Your Password?') }}</a>
-=======
                                     <a href="{{ route('password.request') }}" class="btn btn-link px-0" type="button">{{ __('Forgot Your Password?') }}</a>
->>>>>>> 7a2b1b6ea08927ff26409929dafd2f9fb4874069
                                 </div>
                             @endif
                         </div>

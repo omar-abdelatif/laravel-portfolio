@@ -15,7 +15,6 @@ class Category extends Model
     {
         return $this->hasMany(Skills::class);
     }
-
     public function projects()
     {
         return $this->hasMany(Project::class);

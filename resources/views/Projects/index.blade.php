@@ -2,6 +2,8 @@
 @section('title', 'Omar Abdelatif | ' . $pageTitle)
 @section('header')
     <header class="header header-sticky mb-4 d-block">
+        @include('layouts.header')
+        <div class="header-divider"></div>
         <section class="content-header">
             <div class="container-fluid">
                 <div class="row">
@@ -113,10 +115,6 @@
         @endforeach
     @endif
     <?php $i = 1 ?>
-<<<<<<< HEAD
-=======
-
->>>>>>> 7a2b1b6ea08927ff26409929dafd2f9fb4874069
     <table class="table text-center align-middle table-striped table-hover" id="table">
         <thead>
             <tr>
@@ -133,28 +131,15 @@
         </thead>
         <tbody>
             @foreach ($projects as $project)
-<<<<<<< HEAD
-                <?php $all_tags = explode(',', $project->tags) ?>
-=======
->>>>>>> 7a2b1b6ea08927ff26409929dafd2f9fb4874069
                 <tr>
                     <td>{{$i++}}</td>
                     <td>{{$project->title}}</td>
                     <td>{{$project->description}}</td>
                     <td>{{$project->category}}</td>
                     <td>
-<<<<<<< HEAD
-                        @foreach ($all_tags as $tag)
-                            <span class="p-2 bg-primary rounded me-2 text-white mb-4">
-                                {{$tag}}
-                            </span>
-                        @endforeach
-                        {{-- {{$project->tags}} --}}
-=======
                         @foreach (explode(',', $project->tags) as $tag)
                             <span class="p-2 bg-primary rounded text-white">{{$tag}}</span>
                         @endforeach
->>>>>>> 7a2b1b6ea08927ff26409929dafd2f9fb4874069
                     </td>
                     <td>{{$project->url}}</td>
                     <td>{{$project->github}}</td>
@@ -162,31 +147,18 @@
                         <img src="{{asset('assets/imgs/projects/' . $project->img)}}" alt="{{$project->title}}" width="50" class="rounded">
                     </td>
                     <td>
-<<<<<<< HEAD
-                        {{-- edit --}}
-                        <button type="button" class="btn btn-warning" data-coreui-toggle="modal" data-coreui-target="#edit_project{{$project->id}}">
-=======
                         {{-- ! edit ! --}}
                         <button type="button" class="btn btn-warning" data-coreui-toggle="modal" data-coreui-target="#edit_project_{{$project->id}}">
->>>>>>> 7a2b1b6ea08927ff26409929dafd2f9fb4874069
                             <b>
                                 Edit
                             </b>
                         </button>
-<<<<<<< HEAD
-                        <div class="modal fade" id="edit_project{{$project->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-=======
                         <div class="modal fade" id="edit_project_{{$project->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
->>>>>>> 7a2b1b6ea08927ff26409929dafd2f9fb4874069
                             <div class="modal-dialog modal-lg">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h5 class="modal-title" id="exampleModalLabel">Update Project {{$project->title}}</h5>
-<<<<<<< HEAD
-                                        <button type="button" class="btn-close" data-data-coreui-toggle-dismiss="modal" aria-label="Close"></button>
-=======
                                         <button type="button" class="btn-close" data-coreui-dismiss="modal" aria-label="Close"></button>
->>>>>>> 7a2b1b6ea08927ff26409929dafd2f9fb4874069
                                     </div>
                                     <div class="modal-body bg-dark">
                                         <form action="{{route('projects.update')}}" method="post" enctype="multipart/form-data">
@@ -220,7 +192,9 @@
                                                                 <option value="{{$tag->title}}"
                                                                     @if (collect(explode(',', $project->tags))->contains($tag->title))
                                                                         selected
-                                                                    @endif>{{$tag->title}}</option>
+                                                                    @endif>
+                                                                    {{$tag->title}}
+                                                                </option>
                                                             @endforeach
                                                         </select>
                                                     </div>
@@ -228,37 +202,19 @@
                                                 <div class="col-lg-6">
                                                     <div class="form-group text-center mb-3">
                                                         <label for="url" class="text-white">
-<<<<<<< HEAD
-                                                            <b>
-                                                                Url
-                                                            </b>
-=======
                                                             <b>Url</b>
->>>>>>> 7a2b1b6ea08927ff26409929dafd2f9fb4874069
                                                         </label>
                                                         <input type="text" class="form-control text-center" name="url" id="url" value="{{$project->url}}">
                                                     </div>
                                                     <div class="form-group text-center mb-3">
                                                         <label for="github" class="text-white">
-<<<<<<< HEAD
-                                                            <b>
-                                                                Github
-                                                            </b>
-=======
                                                             <b>Github</b>
->>>>>>> 7a2b1b6ea08927ff26409929dafd2f9fb4874069
                                                         </label>
                                                         <input type="text" name="github" id="github" class="form-control text-center" value="{{$project->github}}">
                                                     </div>
                                                     <div class="form-group text-center mb-3">
                                                         <label for="img" class="text-white">
-<<<<<<< HEAD
-                                                            <b>
-                                                                Image
-                                                            </b>
-=======
                                                             <b>Image</b>
->>>>>>> 7a2b1b6ea08927ff26409929dafd2f9fb4874069
                                                         </label>
                                                         <input type="file" name="img" id="img" class="form-control text-center" value="{{$project->img}}">
                                                     </div>

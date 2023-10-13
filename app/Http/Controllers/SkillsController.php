@@ -42,11 +42,7 @@ class SkillsController extends Controller
     }
     public function update(Request $request)
     {
-        $validated = 'Error Happen';
-        $validated = $request->validate([
-            'img' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
-            'category' => 'required'
-        ]);
+        $validated = 'Error happen';
         $skills = Skills::find($request->id);
         if ($skills) {
             if ($request->hasFile('img') && $skills->img !== null) {
@@ -61,8 +57,6 @@ class SkillsController extends Controller
                 $destinationPath = public_path('assets/imgs/skills/');
                 $upload->move($destinationPath, $name);
                 $skills->img = $name;
-            } elseif (!$request->file('img')) {
-                $name = 'download.png';
             }
             $skills->category = $request->category;
             $update = $skills->save();
