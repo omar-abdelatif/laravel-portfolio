@@ -19,7 +19,7 @@ class Information extends Model
         'cv',
         'facebook_link',
         'github_link',
-        'whasapp_link',
+        'whatsapp_link',
         'linkedin_link'
     ];
 }

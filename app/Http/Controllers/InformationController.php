@@ -24,7 +24,7 @@ class InformationController extends Controller
             'email' => 'required|email',
             'facebook_link' => 'required',
             'github_link' => 'required',
-            'whasapp_link' => 'required',
+            'whatsapp_link' => 'required',
             'linkedin_link' => 'required',
             'img' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
@@ -48,7 +48,7 @@ class InformationController extends Controller
             'age' => $validated['age'],
             'facebook_link' => $validated['facebook_link'],
             'github_link' => $validated['github_link'],
-            'whasapp_link' => $validated['whasapp_link'],
+            'whatsapp_link' => $validated['whatsapp_link'],
             'linkedin_link' => $validated['linkedin_link'],
             'img' => $name,
             'cv' => $cv
@@ -104,7 +104,7 @@ class InformationController extends Controller
             $infos->age = $request->age;
             $infos->facebook_link = $request->facebook_link;
             $infos->github_link = $request->github_link;
-            $infos->whasapp_link = $request->whasapp_link;
+            $infos->whatsapp_link = $request->whasapp_link;
             $infos->linkedin_link = $request->linkedin_link;
             $update = $infos->save();
             if ($update) {

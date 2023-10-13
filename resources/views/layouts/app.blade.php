@@ -6,18 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="shortcut icon" href={{asset('assets/imgs/logo/favicon.png')}} type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    @vite('resources/sass/app.scss')
-    <title>
-        @yield('title', 'Omar Abdelatif')
-    </title>
-    <meta name="theme-color" content="#ffffff">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/@coreui/coreui-pro@4.6.4/dist/css/coreui.min.css">
-    <link rel="stylesheet" href="{{asset('assets/css/custom.css')}}">
     <title>@yield('title', 'Omar Abdelatif')</title>
-    <link rel="stylesheet" href="https://unpkg.com/@coreui/coreui-pro@4.6.0-beta.0/dist/css/coreui.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.4.2/css/all.min.css">
     <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="https://unpkg.com/@coreui/coreui-pro@4.6.4/dist/css/coreui.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="{{asset('assets/css/custom.css')}}">
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <body>

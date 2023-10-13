@@ -90,7 +90,7 @@
                                     <label for="whatsapp" class="text-white">
                                         <b>Whatsapp Link</b>
                                     </label>
-                                    <input type="text" name="whasapp_link" id="whatsapp" placeholder="Whatsapp Link" class="form-control text-center">
+                                    <input type="text" name="whatsapp_link" id="whatsapp" placeholder="Whatsapp Link" class="form-control text-center">
                                 </div>
                                 <div class="form-group text-center mb-3">
                                     <label for="linkedin" class="text-white">
@@ -229,7 +229,7 @@
                                                             <label for="whatsapp" class="text-white">
                                                                 <b>Whatsapp Link</b>
                                                             </label>
-                                                            <input type="text" name="whasapp_link" value="{{$info->whasapp_link}}" id="whatsapp" placeholder="Whatsapp Link" class="form-control text-center">
+                                                            <input type="text" name="whatsapp_link" value="{{$info->whatsapp_link}}" id="whatsapp" placeholder="Whatsapp Link" class="form-control text-center">
                                                         </div>
                                                         <div class="form-group text-center">
                                                             <label for="linkedin" class="text-white">

@@ -20,7 +20,7 @@ Auth::routes(['verify' => true]);
 Route::get('/', [MasterController::class, 'index']);
 Route::get('/services', [MasterController::class, 'servicesPage']);
 Route::get('/projects', [MasterController::class, 'projectPage']);
-Route::get('/blog', [MasterController::class, 'blogPage']);
+Route::get('/blogs', [MasterController::class, 'blogPage']);
 Route::get('/about', [MasterController::class, 'aboutPage']);
 Route::get('/contact', [MasterController::class, 'contactPage']);
 
