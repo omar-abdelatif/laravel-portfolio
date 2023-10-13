@@ -38,24 +38,19 @@ class ProjectController extends Controller
             $name = 'download.png';
         }
         $category = Category::where('title', $validated['category'])->first();
+        $tags = Tags::where('id', $validated['tags'])->get();
         $all_tags = $validated['tags'];
         $store = Project::create([
             'title' => $validated['title'],
             'description' => $validated['description'],
             'category' => $validated['category'],
-<<<<<<< HEAD
             'tags' => implode(',', $validated['tags']),
-=======
             'tags' => implode(',', $all_tags),
->>>>>>> 7a2b1b6ea08927ff26409929dafd2f9fb4874069
             'github' => $validated['github'],
             'url' => $validated['url'],
             'img' => $name,
             'category_id' => $category->id,
-<<<<<<< HEAD
             'tag_id' => $tags->id
-=======
->>>>>>> 7a2b1b6ea08927ff26409929dafd2f9fb4874069
         ]);
         if ($store) {
             return redirect()->route('projects.index')->with('success', 'Project Inserted Successfully');
@@ -67,10 +62,8 @@ class ProjectController extends Controller
     {
         $project = Project::find($id);
         if ($project) {
-<<<<<<< HEAD
             $project->delete();
             return redirect()->route('projects.index')->withSuccess("Deleted successfully");
-=======
             if ($project->img !== null) {
                 $oldPath = public_path('assets/imgs/projects/' . $project->img);
                 if (file_exists($oldPath)) {
@@ -81,7 +74,6 @@ class ProjectController extends Controller
             return redirect()->route('projects.index')->with([
                 'success' => "Deleted successfully",
             ]);
->>>>>>> 7a2b1b6ea08927ff26409929dafd2f9fb4874069
         }
         return redirect()->route('projects.index')->withErrors('Error Happen');
     }
@@ -89,7 +81,6 @@ class ProjectController extends Controller
     {
         $project =  Project::find($request->id);
         if ($project) {
-<<<<<<< HEAD
             $project->title = $request->title;
             $project->description = $request->description;
             $project->category = $request->category;
@@ -99,7 +90,6 @@ class ProjectController extends Controller
             $update = $project->save();
             if ($update)
                 return redirect()->route('projects.index')->withSuccess("Updated successfully");
-=======
             //! Delete Old Img
             if ($request->hasFile('img') && $project->img !== null) {
                 $oldPath = public_path('assets/imgs/projects/' . $project->img);
@@ -127,7 +117,6 @@ class ProjectController extends Controller
             if ($update) {
                 return redirect()->route('projects.index')->withSuccess("Updated successfully");
             }
->>>>>>> 7a2b1b6ea08927ff26409929dafd2f9fb4874069
         }
         return redirect()->route('projects.index')->withErrors('Error Happen');
     }

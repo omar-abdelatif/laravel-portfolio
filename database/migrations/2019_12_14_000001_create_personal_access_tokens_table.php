@@ -12,14 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('personal_access_tokens', function (Blueprint $table) {
-<<<<<<< HEAD
             $table->engine = 'MyISAM';
             $table->id();
             $table->morphs('tokenable');
-=======
             $table->integer('id');
             $table->string('tokenable_type', 191)->index();
->>>>>>> 7a2b1b6ea08927ff26409929dafd2f9fb4874069
             $table->string('name');
             $table->string('token', 64)->unique();
             $table->text('abilities')->nullable();

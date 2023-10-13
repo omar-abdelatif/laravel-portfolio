@@ -16,10 +16,7 @@ class Information extends Model
         'address',
         'age',
         'img',
-<<<<<<< HEAD
         'cv',
-=======
->>>>>>> 7a2b1b6ea08927ff26409929dafd2f9fb4874069
         'facebook_link',
         'github_link',
         'whasapp_link',

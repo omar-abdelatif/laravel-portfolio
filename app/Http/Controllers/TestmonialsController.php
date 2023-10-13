@@ -58,18 +58,11 @@ class TestmonialsController extends Controller
                 $destinationPath = public_path('assets/imgs/testmonials/');
                 $upload->move($destinationPath, $name);
                 $testmonial->img = $name;
-<<<<<<< HEAD
-            }
-
-            $testmonial->client_name = $request->client_name;
-            $testmonial->title = $request->title;
-=======
             } elseif (!$request->file('img')) {
                 $name = 'download.png';
             }
             $testmonial->client_name = $request->client_name;
             $testmonial->title       = $request->title;
->>>>>>> 7a2b1b6ea08927ff26409929dafd2f9fb4874069
             $update = $testmonial->save();
             if ($update) {
                 return redirect()->route('testmonials.index')->withSuccess('Updated Successfully');

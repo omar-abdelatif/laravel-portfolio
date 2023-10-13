@@ -35,7 +35,6 @@ class CategoryController extends Controller
     }
     public function update(Request $request)
     {
-<<<<<<< HEAD
         $id = $request->id;
         $category = Category::find($id);
         if ($category) {
@@ -45,7 +44,6 @@ class CategoryController extends Controller
             }
             return redirect()->route('categories.index')->withErrors('Error Happen');
         }
-=======
         $category =  Category::find($request->id);
         if ($category) {
             $update = $category->update($request->all());
@@ -54,6 +52,5 @@ class CategoryController extends Controller
             }
         }
         return redirect()->route('categories.index')->withErrors('Error Happen');
->>>>>>> 7a2b1b6ea08927ff26409929dafd2f9fb4874069
     }
 }
