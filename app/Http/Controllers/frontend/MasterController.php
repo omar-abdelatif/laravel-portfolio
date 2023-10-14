@@ -30,8 +30,13 @@ class MasterController extends Controller
     {
         $pageTitle = 'Projects';
         $pages = Pages::all();
-        $projects = Project::all();
-        return view('frontend.pages.projects', compact('pageTitle', 'projects', 'pages'));
+        $count = Project::count();
+        $projects = Project::get();
+        $frontProjects = $projects->where('category', 'FrontEnd');
+        $frontProjectsCount = $projects->where('category', 'FrontEnd')->count();
+        $backProjects = $projects->where('category', 'BackEnd');
+        $backProjectsCount = $projects->where('category', 'BackEnd')->count();
+        return view('frontend.pages.projects', compact('pageTitle', 'projects', 'pages', 'count', 'frontProjects', 'backProjects', 'frontProjectsCount', 'backProjectsCount'));
     }
     public function blogPage()
     {

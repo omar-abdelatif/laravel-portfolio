@@ -145,7 +145,7 @@ h1,h2,h3,h4,h5,h6{
     overflow: hidden;
     background-color: #3a2b71 !important;
 }
-/* ! Works Page ! */
+/* ! Projects Page ! */
 .nav-item:hover button{
     background-color: #00c0ff;
     border-radius: 7px;
@@ -168,17 +168,20 @@ h1,h2,h3,h4,h5,h6{
 }
 .project-tags span{
     background-color: #00c0ff;
+    margin-bottom: 10px;
 }
 .ribbon{
     top: 35px;
     left: -45px;
     position: absolute;
     transform: rotate(-45deg);
+    z-index: 1;
 }
 .ribbon span{
     background-color: #9281cf;
     text-transform: uppercase;
 }
+/* ! Project Details Page ! */
 /* ! Blogs Page ! */
 .blog-item{
     background-color: #1a5bd5 !important;

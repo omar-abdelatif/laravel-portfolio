@@ -1,9 +1,5 @@
 @extends('frontend.layout.master')
 @section('title', 'Omar Abdelatif | ' . $pageTitle)
-@php
-    $all_projects = App\Models\Project::all();
-    $i = 1;
-@endphp
 @section('content')
     <div class="wrapper bg-primary rounded w-90 mx-auto m-5">
         <section class="works p-5">
@@ -40,45 +36,123 @@
                 <div class="tab-content mt-5" id="pills-tabContent">
                     <div class="tab-pane p-5 text-center fade show active" id="pills_all" role="tabpanel" tabindex="0" aria-labelledby="pills_all_tab">
                         <div class="row">
-                            @foreach ($all_projects as $project)
-                                <div class="col-lg-4 col-md-6">
-                                    <div class="project-item rounded">
-                                        <div class="ribbon">
-                                            <span class="text-white text-center py-2 px-5">{{$project->category}}</span>
-                                        </div>
-                                        <div class="project-img">
-                                            <img src="{{asset('assets/imgs/projects/'.$project->img)}}" class="img-fluid" width="40px" alt="{{$project->title}}">
-                                        </div>
-                                        <div class="project-content p-2">
-                                            <a href="{{url("details/$project->id")}}" class="text-decoration-none text-white">
-                                                <h3>{{$project->title}}</h3>
-                                            </a>
-                                            <div class="links my-3">
-                                                <a href="{{$project->github}}" class="github text-white text-decoration-none me-2">
-                                                    <i class="fa-brands fa-github fa-xl"></i>
-                                                </a>
-                                                <a href="{{$project->url}}" class="url text-white text-decoration-none">
-                                                    <i class="fa-solid fa-link fa-xl"></i>
-                                                </a>
+                            @if ($count > 0)
+                                @foreach ($projects as $project)
+                                    <div class="col-lg-4 col-md-6">
+                                        <div class="project-item rounded">
+                                            <div class="ribbon">
+                                                <span class="text-white text-center py-2 px-5">{{$project->category}}</span>
                                             </div>
-                                            <div class="project-tags my-3">
-                                                @foreach (explode(',', $project->tags) as $tags)
-                                                    <span class="p-1 rounded">{{$tags}}</span>
-                                                @endforeach
+                                            <div class="project-img">
+                                                <img src="{{asset('assets/imgs/projects/'.$project->img)}}" class="img-fluid" width="40px" alt="{{$project->title}}">
+                                            </div>
+                                            <div class="project-content p-3">
+                                                <a href="{{url("details/$project->id")}}" class="text-decoration-none text-white">
+                                                    <h3>{{$project->title}}</h3>
+                                                </a>
+                                                <div class="links my-3">
+                                                    <a href="{{$project->github}}" class="github text-white text-decoration-none me-2">
+                                                        <i class="fa-brands fa-github fa-xl"></i>
+                                                    </a>
+                                                    <a href="{{$project->url}}" class="url text-white text-decoration-none">
+                                                        <i class="fa-solid fa-link fa-xl"></i>
+                                                    </a>
+                                                </div>
+                                                <div class="project-tags mt-4 d-flex align-items-center justify-content-evenly flex-wrap">
+                                                    @foreach (explode(',', $project->tags) as $tags)
+                                                        <span class="p-1 rounded">{{$tags}}</span>
+                                                    @endforeach
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            @endforeach
+                                @endforeach
+                            @else
+                                <h1 class="text-center">No Projects To Show</h1>
+                            @endif
                         </div>
                     </div>
-                    <div class="tab-pane p-5 text-center fade undefined" id="pills_ui_design" role="tabpanel" tabindex="0" aria-labelledby="pills_ui_design_tab">UI Design Projects</div>
-                    <div class="tab-pane p-5 text-center fade undefined" id="pills_ui_dev" role="tabpanel" tabindex="0" aria-labelledby="pills_ui_dev_tab">UI Development Project</div>
-                    <div class="tab-pane p-5 text-center fade undefined" id="pills_frontend" role="tabpanel" tabindex="0" aria-labelledby="pills_frontend_tab">FrontEnd Development Projects</div>
-                    <div class="tab-pane p-5 text-center fade undefined" id="pills_backend" role="tabpanel" tabindex="0" aria-labelledby="pills_backend_tab">BackEnd Development Projects</div>
-                    <div class="tab-pane p-5 text-center fade undefined" id="pills_react" role="tabpanel" tabindex="0" aria-labelledby="pills_react_tab">React.js Projects</div>
-                    <div class="tab-pane p-5 text-center fade undefined" id="pills_next" role="tabpanel" tabindex="0" aria-labelledby="pills_next_tab">Next.js Projects</div>
-                    <div class="tab-pane p-5 text-center fade undefined" id="pills_laravel" role="tabpanel" tabindex="0" aria-labelledby="pills_laravel_tab">Laravel Projects</div>
+                    <div class="tab-pane p-5 text-center fade" id="pills_ui_design" role="tabpanel" tabindex="0" aria-labelledby="pills_ui_design_tab">UI Design Projects</div>
+                    <div class="tab-pane p-5 text-center fade" id="pills_ui_dev" role="tabpanel" tabindex="0" aria-labelledby="pills_ui_dev_tab">UI Development Project</div>
+                    <div class="tab-pane p-5 text-center fade" id="pills_frontend" role="tabpanel" tabindex="0" aria-labelledby="pills_frontend_tab">
+                        <div class="row">
+                            @if ($count = 0)
+                                <h1 class="text-center">No FrontEnd Projects To Show</h1>
+                            @else
+                                @foreach ($frontProjects as $item)
+                                    <div class="col-lg-4 col-md-6">
+                                        <div class="project-item rounded">
+                                            <div class="ribbon">
+                                                <span class="text-white text-center py-2 px-5">{{$item->category}}</span>
+                                            </div>
+                                            <div class="project-img">
+                                                <img src="{{asset('assets/imgs/projects/'.$item->img)}}" class="img-fluid" width="40px" alt="{{$item->title}}">
+                                            </div>
+                                            <div class="project-content p-3">
+                                                <a href="{{url("details/$item->id")}}" class="text-decoration-none text-white">
+                                                    <h3>{{$item->title}}</h3>
+                                                </a>
+                                                <div class="links my-3">
+                                                    <a href="{{$item->github}}" class="github text-white text-decoration-none me-2">
+                                                        <i class="fa-brands fa-github fa-xl"></i>
+                                                    </a>
+                                                    <a href="{{$item->url}}" class="url text-white text-decoration-none">
+                                                        <i class="fa-solid fa-link fa-xl"></i>
+                                                    </a>
+                                                </div>
+                                                <div class="project-tags mt-4 d-flex align-items-center justify-content-evenly flex-wrap">
+                                                    @foreach (explode(',', $item->tags) as $tags)
+                                                        <span class="p-1 rounded">{{$tags}}</span>
+                                                    @endforeach
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            @endif
+                        </div>
+                    </div>
+                    <div class="tab-pane p-5 text-center fade" id="pills_backend" role="tabpanel" tabindex="0" aria-labelledby="pills_backend_tab">
+                        <div class="row">
+                            @if ($backProjectsCount > 0)
+                                @foreach ($backProjects as $item)
+                                    <div class="col-lg-4 col-md-6">
+                                        <div class="project-item rounded">
+                                            <div class="ribbon">
+                                                <span class="text-white text-center py-2 px-5">{{$item->category}}</span>
+                                            </div>
+                                            <div class="project-img">
+                                                <img src="{{asset("assets/imgs/projects/$item->img")}}" class="img-fluid" width="40px" alt="{{$item->title}}">
+                                            </div>
+                                            <div class="project-content p-3">
+                                                <a href="{{url("details/$item->id")}}" class="text-decoration-none text-white">
+                                                    <h3>{{$item->title}}</h3>
+                                                </a>
+                                                <div class="links my-3">
+                                                    <a href="{{$item->github}}" class="github text-white text-decoration-none me-2">
+                                                        <i class="fa-brands fa-github fa-xl"></i>
+                                                    </a>
+                                                    <a href="{{$item->url}}" class="url text-white text-decoration-none">
+                                                        <i class="fa-solid fa-link fa-xl"></i>
+                                                    </a>
+                                                </div>
+                                                <div class="project-tags mt-4 d-flex align-items-center justify-content-evenly flex-wrap">
+                                                    @foreach (explode(',', $item->tags) as $tags)
+                                                        <span class="p-1 rounded">{{$tags}}</span>
+                                                    @endforeach
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            @else
+                                <h1 class="text-center">No BackEnd Projects To Show</h1>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="tab-pane p-5 text-center fade" id="pills_react" role="tabpanel" tabindex="0" aria-labelledby="pills_react_tab">React.js Projects</div>
+                    <div class="tab-pane p-5 text-center fade" id="pills_next" role="tabpanel" tabindex="0" aria-labelledby="pills_next_tab">Next.js Projects</div>
+                    <div class="tab-pane p-5 text-center fade" id="pills_laravel" role="tabpanel" tabindex="0" aria-labelledby="pills_laravel_tab">Laravel Projects</div>
                 </div>
             </div>
         </section>
