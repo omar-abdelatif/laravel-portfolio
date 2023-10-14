@@ -54,4 +54,15 @@ class MasterController extends Controller
         $contact =  Information::first();
         return view('frontend.pages.contact', compact('pageTitle', 'pages', 'contact'));
     }
+    public function projectDetails($name)
+    {
+        $pageTitle = 'Project';
+        $pages = Pages::all();
+        $detail = Project::find($name);
+        return view('frontend.pages.projectDetails', compact('detail', 'pageTitle', 'pages'));
+    }
+    public function errorPage()
+    {
+        return view('frontend.pages.errors');
+    }
 }

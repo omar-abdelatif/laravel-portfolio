@@ -9,13 +9,10 @@ use App\Http\Controllers\PagesController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SkillsController;
-use App\Http\Controllers\SocialLinksController;
 use App\Http\Controllers\TagsController;
 use App\Http\Controllers\TestmonialsController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-
-Auth::routes(['verify' => true]);
 
 Route::get('/', [MasterController::class, 'index']);
 Route::get('/services', [MasterController::class, 'servicesPage']);
@@ -23,6 +20,10 @@ Route::get('/projects', [MasterController::class, 'projectPage']);
 Route::get('/blogs', [MasterController::class, 'blogPage']);
 Route::get('/about', [MasterController::class, 'aboutPage']);
 Route::get('/contact', [MasterController::class, 'contactPage']);
+Route::get('/details/{name}', [MasterController::class, 'projectDetails']);
+Route::get('*', [MasterController::class, 'errorPage']);
+
+Auth::routes(['verify' => true]);
 
 Route::group(['prefix' => 'admin'], function () {
     Route::view('login', 'auth.login');

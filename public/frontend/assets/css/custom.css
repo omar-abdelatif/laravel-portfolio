@@ -151,6 +151,23 @@ h1,h2,h3,h4,h5,h6{
     border-radius: 7px;
     color: #1e1345 !important;
 }
+.project-item{
+    background-color: #3a2b71;
+    transition: .3s all;
+    overflow: hidden;
+}
+.project-item img{
+    width: 200px;
+}
+.project-item:hover img{
+    transform: scale(1.1);
+}
+.project-content{
+    background-color: #1e1345;
+}
+.project-tags span{
+    background-color: #00c0ff;
+}
 /* ! Blogs Page ! */
 .blog-item{
     background-color: #1a5bd5 !important;
