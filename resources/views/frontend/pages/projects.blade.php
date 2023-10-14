@@ -43,6 +43,9 @@
                             @foreach ($all_projects as $project)
                                 <div class="col-lg-4 col-md-6">
                                     <div class="project-item rounded">
+                                        <div class="ribbon">
+                                            <span class="text-white text-center py-2 px-5">{{$project->category}}</span>
+                                        </div>
                                         <div class="project-img">
                                             <img src="{{asset('assets/imgs/projects/'.$project->img)}}" class="img-fluid" width="40px" alt="{{$project->title}}">
                                         </div>

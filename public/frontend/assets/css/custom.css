@@ -152,6 +152,7 @@ h1,h2,h3,h4,h5,h6{
     color: #1e1345 !important;
 }
 .project-item{
+    position: relative;
     background-color: #3a2b71;
     transition: .3s all;
     overflow: hidden;
@@ -167,6 +168,16 @@ h1,h2,h3,h4,h5,h6{
 }
 .project-tags span{
     background-color: #00c0ff;
+}
+.ribbon{
+    top: 35px;
+    left: -45px;
+    position: absolute;
+    transform: rotate(-45deg);
+}
+.ribbon span{
+    background-color: #9281cf;
+    text-transform: uppercase;
 }
 /* ! Blogs Page ! */
 .blog-item{
