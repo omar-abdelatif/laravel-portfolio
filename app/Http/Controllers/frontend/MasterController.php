@@ -30,13 +30,34 @@ class MasterController extends Controller
     {
         $pageTitle = 'Projects';
         $pages = Pages::all();
-        $count = Project::count();
-        $projects = Project::get();
-        $frontProjects = $projects->where('category', 'FrontEnd');
-        $frontProjectsCount = $projects->where('category', 'FrontEnd')->count();
-        $backProjects = $projects->where('category', 'BackEnd');
-        $backProjectsCount = $projects->where('category', 'BackEnd')->count();
-        return view('frontend.pages.projects', compact('pageTitle', 'projects', 'pages', 'count', 'frontProjects', 'backProjects', 'frontProjectsCount', 'backProjectsCount'));
+        $allProjects = Project::get();
+        $allProjectsCount = $allProjects->count();
+        $frontProjects = $allProjects->where('category', 'FrontEnd');
+        $frontProjectsCount = $allProjects->where('category', 'FrontEnd')->count();
+        $backProjects = $allProjects->where('category', 'BackEnd');
+        $backProjectsCount = $allProjects->where('category', 'BackEnd')->count();
+        $designProjects = $allProjects->where('category', 'Ui/Ux');
+        $designProjectsCount = $allProjects->where('category', 'Ui/Ux')->count();
+        $mobileProjects = $allProjects->where('category', 'Mobile');
+        $mobileProjectsCount = $allProjects->where('category', 'Mobile')->count();
+        $fullstackProjects = $allProjects->where('category', 'FullStack');
+        $fullstackProjectsCount = $allProjects->where('category', 'FullStack')->count();
+        return view('frontend.pages.projects', compact([
+            'pageTitle',
+            'pages',
+            'allProjects',
+            'allProjectsCount',
+            'frontProjects',
+            'frontProjectsCount',
+            'backProjects',
+            'backProjectsCount',
+            'designProjects',
+            'designProjectsCount',
+            'mobileProjects',
+            'mobileProjectsCount',
+            'fullstackProjects',
+            'fullstackProjectsCount',
+        ]));
     }
     public function blogPage()
     {

@@ -15,29 +15,23 @@
                         <button class="nav-link" data-bs-target="#pills_ui_design" id="pills_ui_design_tab" data-bs-toggle="pill" type="button" role="tab" aria-controls="pills_ui_design" aria-selected="true">Ui Design</button>
                     </li>
                     <li class="nav-item me-3" role="presentation">
-                        <button class="nav-link" data-bs-target="#pills_ui_dev" id="pills_ui_dev_tab" data-bs-toggle="pill" type="button" role="tab" aria-controls="pills_ui_dev" aria-selected="false">Ui Devlopment</button>
-                    </li>
-                    <li class="nav-item me-3" role="presentation">
                         <button class="nav-link" data-bs-target="#pills_frontend" id="pills_frontend_tab" data-bs-toggle="pill" type="button" role="tab" aria-controls="pills_frontend" aria-selected="false">FrontEnd</button>
                     </li>
                     <li class="nav-item me-3" role="presentation">
                         <button class="nav-link" data-bs-target="#pills_backend" id="pills_backend_tab" data-bs-toggle="pill" type="button" role="tab" aria-controls="pills_backend" aria-selected="false">BackEnd</button>
                     </li>
                     <li class="nav-item me-3" role="presentation">
-                        <button class="nav-link" data-bs-target="#pills_react" id="pills_react_tab" data-bs-toggle="pill" type="button" role="tab" aria-controls="pills_react" aria-selected="false">React.js</button>
+                        <button class="nav-link" data-bs-target="#pills_mobile" id="pills_mobile_tab" data-bs-toggle="pill" type="button" role="tab" aria-controls="pills_mobile" aria-selected="false">Mobile</button>
                     </li>
                     <li class="nav-item me-3" role="presentation">
-                        <button class="nav-link" data-bs-target="#pills_next" id="pills_next_tab" data-bs-toggle="pill" type="button" role="tab" aria-controls="pills_next" aria-selected="false">Next.js</button>
-                    </li>
-                    <li class="nav-item me-3" role="presentation">
-                        <button class="nav-link" data-bs-target="#pills_laravel" id="pills_laravel_tab" data-bs-toggle="pill" type="button" role="tab" aria-controls="pills_laravel" aria-selected="false">Laravel</button>
+                        <button class="nav-link" data-bs-target="#pills_fullstack" id="pills_fullstack_tab" data-bs-toggle="pill" type="button" role="tab" aria-controls="pills_fullstack_tab" aria-selected="false">FullStack</button>
                     </li>
                 </ul>
                 <div class="tab-content mt-5" id="pills-tabContent">
                     <div class="tab-pane p-5 text-center fade show active" id="pills_all" role="tabpanel" tabindex="0" aria-labelledby="pills_all_tab">
                         <div class="row">
-                            @if ($count > 0)
-                                @foreach ($projects as $project)
+                            @if ($allProjectsCount > 0)
+                                @foreach ($allProjects as $project)
                                     <div class="col-lg-4 col-md-6">
                                         <div class="project-item rounded">
                                             <div class="ribbon">
@@ -72,13 +66,18 @@
                             @endif
                         </div>
                     </div>
-                    <div class="tab-pane p-5 text-center fade" id="pills_ui_design" role="tabpanel" tabindex="0" aria-labelledby="pills_ui_design_tab">UI Design Projects</div>
-                    <div class="tab-pane p-5 text-center fade" id="pills_ui_dev" role="tabpanel" tabindex="0" aria-labelledby="pills_ui_dev_tab">UI Development Project</div>
+                    <div class="tab-pane p-5 text-center fade" id="pills_ui_design" role="tabpanel" tabindex="0" aria-labelledby="pills_ui_design_tab">
+                        <div class="row">
+                            @if ($designProjectsCount > 0)
+                                <h1 class="text-center">Project Found</h1>
+                            @else
+                                <h1 class="text-center">No Projects to Show</h1>
+                            @endif
+                        </div>
+                    </div>
                     <div class="tab-pane p-5 text-center fade" id="pills_frontend" role="tabpanel" tabindex="0" aria-labelledby="pills_frontend_tab">
                         <div class="row">
-                            @if ($count = 0)
-                                <h1 class="text-center">No FrontEnd Projects To Show</h1>
-                            @else
+                            @if ($frontProjectsCount > 0)
                                 @foreach ($frontProjects as $item)
                                     <div class="col-lg-4 col-md-6">
                                         <div class="project-item rounded">
@@ -86,7 +85,7 @@
                                                 <span class="text-white text-center py-2 px-5">{{$item->category}}</span>
                                             </div>
                                             <div class="project-img">
-                                                <img src="{{asset('assets/imgs/projects/'.$item->img)}}" class="img-fluid" width="40px" alt="{{$item->title}}">
+                                                <img src="{{asset("assets/imgs/projects/$item->img")}}" class="img-fluid" width="40px" alt="{{$item->title}}">
                                             </div>
                                             <div class="project-content p-3">
                                                 <a href="{{url("details/$item->id")}}" class="text-decoration-none text-white">
@@ -109,6 +108,17 @@
                                         </div>
                                     </div>
                                 @endforeach
+                            @else
+                                <h1 class="text-center">No FrontEnd Projects To Show</h1>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="tab-pane p-5 text-center fade" id="pills_mobile" role="tabpanel" tabindex="0" aria-labelledby="pills_mobile_tab">
+                        <div class="row">
+                            @if ($mobileProjectsCount > 0)
+                                <h1 class="text-center">Project Found</h1>
+                            @else
+                                <h1 class="text-center">No Projects to Show</h1>
                             @endif
                         </div>
                     </div>
@@ -150,9 +160,15 @@
                             @endif
                         </div>
                     </div>
-                    <div class="tab-pane p-5 text-center fade" id="pills_react" role="tabpanel" tabindex="0" aria-labelledby="pills_react_tab">React.js Projects</div>
-                    <div class="tab-pane p-5 text-center fade" id="pills_next" role="tabpanel" tabindex="0" aria-labelledby="pills_next_tab">Next.js Projects</div>
-                    <div class="tab-pane p-5 text-center fade" id="pills_laravel" role="tabpanel" tabindex="0" aria-labelledby="pills_laravel_tab">Laravel Projects</div>
+                    <div class="tab-pane p-5 text-center fade" id="pills_fullstack" role="tabpanel" tabindex="0" aria-labelledby="pills_fullstack_tab">
+                        <div class="row">
+                            @if ($fullstackProjectsCount > 0)
+                                <h1 class="text-center">Project Found</h1>
+                            @else
+                                <h1 class="text-center">No Projects to Show</h1>
+                            @endif
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
