@@ -18,14 +18,22 @@
         <div class="email-container w-50 mx-auto bg-dark rounded p-5 my-3">
             <div class="email-header ms-3">
                 <p class=" mb-0 text-white fs-4">
-                    <b>Hey</b>
+                    <b>Hey, Omar Abdelatif</b>
                 </p>
                 <p class=" mb-0 text-success fs-2">
-                    <b>{{$mailData['name']}}</b>
+                    My Name Is:
+                    <b>{{$name}}</b>
                 </p>
-                <p class="subject mb-0 text-white fs-4">{{$mailData['subject']}}</p>
-                <p class="phone mb-0 text-white fs-4">{{$mailData['phone']}}</p>
-                <p class="message mb-0 text-white text-center fs-5">{{$mailData['msg']}}</p>
+                <p class=" mb-0 text-success fs-2">
+                    and My Email is
+                    <b>{{$email}}</b>
+                </p>
+                <p class=" mb-0 text-success fs-2">
+                    and My Phone is
+                    <b>{{$phone}}</b>
+                </p>
+                <p class="subject mb-0 text-white fs-4">{{$subject}}</p>
+                <p class="message mb-0 text-white text-center fs-5">{{$msg}}</p>
             </div>
         </div>
     </div>

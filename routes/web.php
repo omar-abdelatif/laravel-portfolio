@@ -20,9 +20,9 @@ Route::get('/blogs', [MasterController::class, 'blogPage']);
 Route::get('/about', [MasterController::class, 'aboutPage']);
 Route::get('/contact', [MasterController::class, 'contactPage']);
 Route::get('/projects', [MasterController::class, 'projectPage']);
-Route::get('/services', [MasterController::class, 'servicesPage']);
-Route::get('/details/{name}', [MasterController::class, 'projectDetails']);
+Route::get('/services', [MasterController::class, 'servicePage']);
 Route::get('/send-email', [MasterController::class, 'sendEmail']);
+Route::get('/details/{name}', [MasterController::class, 'projectDetails']);
 
 Auth::routes(['verify' => true]);
 

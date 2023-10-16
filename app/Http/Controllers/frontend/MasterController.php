@@ -21,7 +21,7 @@ class MasterController extends Controller
         $info = Information::first();
         return view('frontend.master', compact('pageTitle', 'pages', 'info'));
     }
-    public function servicesPage()
+    public function servicePage()
     {
         $pageTitle = 'Services';
         $pages = Pages::all();
@@ -109,12 +109,16 @@ class MasterController extends Controller
             'phone' => $validated['phone'],
             'msg' => $validated['msg'],
         ];
-        $sent = Mail::to('omar.abdelatiif@gmail.com')->send(new SendMail($data));
+        // $sent = Mail::to('omar.abdelatiif@gmail.com')->send(new SendMail($data));
+        $sent = Mail::send('emails.index', $data, function ($message) use ($data) {
+            $message->from($data['email']);
+            $message->to('omar.abdelatiif@gmail.com');
+            $message->subject($data['subject']);
+        });
         if ($sent) {
             dd('Email Sent Successfully');
         } else {
             dd('Error Happen While Sending');
         }
-        // return view('emails.index');
     }
 }
