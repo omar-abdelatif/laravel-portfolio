@@ -38,7 +38,7 @@
                     </div>
                     <div class="col-lg-8">
                         <div class="contact-form mt-3">
-                            <form action="{{url('send-email')}}" method="post">
+                            <form action="{{url('send-email')}}" method="get">
                                 @csrf
                                 <input type="text" name="name" class="form-control mb-3" placeholder="Name">
                                 <input type="email" name="email" class="form-control mb-3" placeholder="Email">

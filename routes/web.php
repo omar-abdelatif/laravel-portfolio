@@ -11,6 +11,7 @@ use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SkillsController;
 use App\Http\Controllers\TagsController;
 use App\Http\Controllers\TestmonialsController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -33,6 +34,7 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('users', [\App\Http\Controllers\UserController::class, 'index'])->name('users.index');
         Route::get('profile', [\App\Http\Controllers\ProfileController::class, 'show'])->name('profile.show');
         Route::put('profile', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
+        Route::post('/update_img', [UserController::class, 'update'])->name('img.update');
         //! Dashboard Routes
         Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
         //! Projects Routes
