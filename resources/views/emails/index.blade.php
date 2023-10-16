@@ -32,7 +32,6 @@
                     and My Phone is
                     <b>{{$phone}}</b>
                 </p>
-                <p class="subject mb-0 text-white fs-4">{{$subject}}</p>
                 <p class="message mb-0 text-white text-center fs-5">{{$msg}}</p>
             </div>
         </div>
