@@ -15,13 +15,14 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [MasterController::class, 'index']);
-Route::get('/services', [MasterController::class, 'servicesPage']);
-Route::get('/projects', [MasterController::class, 'projectPage']);
+Route::get('*', [MasterController::class, 'errorPage']);
 Route::get('/blogs', [MasterController::class, 'blogPage']);
 Route::get('/about', [MasterController::class, 'aboutPage']);
 Route::get('/contact', [MasterController::class, 'contactPage']);
+Route::get('/projects', [MasterController::class, 'projectPage']);
+Route::get('/services', [MasterController::class, 'servicesPage']);
 Route::get('/details/{name}', [MasterController::class, 'projectDetails']);
-Route::get('*', [MasterController::class, 'errorPage']);
+Route::get('/send-email', [MasterController::class, 'sendEmail']);
 
 Auth::routes(['verify' => true]);
 

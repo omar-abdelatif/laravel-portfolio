@@ -38,12 +38,13 @@
                     </div>
                     <div class="col-lg-8">
                         <div class="contact-form mt-3">
-                            <form action="" method="POST">
-                                <input type="text" name="name" class="form-control mb-3" placeholder="Name" required="">
-                                <input type="email" name="email" class="form-control mb-3" placeholder="Email" required="">
-                                <input type="text" name="subject" class="form-control mb-3" placeholder="Subject" required="">
-                                <input type="tel" name="phon" class="form-control mb-3" placeholder="Phone" required="">
-                                <textarea class="form-control mb-3" name="content" placeholder="Message" rows="4" required=""></textarea>
+                            <form action="{{url('send-email')}}" method="get">
+                                @csrf
+                                <input type="text" name="name" class="form-control mb-3" placeholder="Name">
+                                <input type="email" name="email" class="form-control mb-3" placeholder="Email">
+                                <input type="text" name="subject" class="form-control mb-3" placeholder="Subject">
+                                <input type="tel" name="phone" class="form-control mb-3" placeholder="Phone">
+                                <textarea class="form-control mb-3" name="msg" placeholder="Message" rows="4"></textarea>
                                 <button type="submit" class="btn btn-success w-100">
                                     <b>SendEmail</b>
                                 </button>

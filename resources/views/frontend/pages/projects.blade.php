@@ -69,7 +69,36 @@
                     <div class="tab-pane p-5 text-center fade" id="pills_ui_design" role="tabpanel" tabindex="0" aria-labelledby="pills_ui_design_tab">
                         <div class="row">
                             @if ($designProjectsCount > 0)
-                                <h1 class="text-center">Project Found</h1>
+                                @foreach ($designProjects as $project)
+                                    <div class="col-lg-4 col-md-6">
+                                        <div class="project-item rounded">
+                                            <div class="ribbon">
+                                                <span class="text-white text-center py-2 px-5">{{$project->category}}</span>
+                                            </div>
+                                            <div class="project-img">
+                                                <img src="{{asset('assets/imgs/projects/'.$project->img)}}" class="img-fluid" width="40px" alt="{{$project->title}}">
+                                            </div>
+                                            <div class="project-content p-3">
+                                                <a href="{{url("details/$project->id")}}" class="text-decoration-none text-white">
+                                                    <h3>{{$project->title}}</h3>
+                                                </a>
+                                                <div class="links my-3">
+                                                    <a href="{{$project->github}}" class="github text-white text-decoration-none me-2">
+                                                        <i class="fa-brands fa-github fa-xl"></i>
+                                                    </a>
+                                                    <a href="{{$project->url}}" class="url text-white text-decoration-none">
+                                                        <i class="fa-solid fa-link fa-xl"></i>
+                                                    </a>
+                                                </div>
+                                                <div class="project-tags mt-4 d-flex align-items-center justify-content-evenly flex-wrap">
+                                                    @foreach (explode(',', $project->tags) as $tags)
+                                                        <span class="p-1 rounded">{{$tags}}</span>
+                                                    @endforeach
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
                             @else
                                 <h1 class="text-center">No Projects to Show</h1>
                             @endif
@@ -116,7 +145,36 @@
                     <div class="tab-pane p-5 text-center fade" id="pills_mobile" role="tabpanel" tabindex="0" aria-labelledby="pills_mobile_tab">
                         <div class="row">
                             @if ($mobileProjectsCount > 0)
-                                <h1 class="text-center">Project Found</h1>
+                                @foreach ($mobileProjects as $project)
+                                    <div class="col-lg-4 col-md-6">
+                                        <div class="project-item rounded">
+                                            <div class="ribbon">
+                                                <span class="text-white text-center py-2 px-5">{{$project->category}}</span>
+                                            </div>
+                                            <div class="project-img">
+                                                <img src="{{asset('assets/imgs/projects/'.$project->img)}}" class="img-fluid" width="40px" alt="{{$project->title}}">
+                                            </div>
+                                            <div class="project-content p-3">
+                                                <a href="{{url("details/$project->id")}}" class="text-decoration-none text-white">
+                                                    <h3>{{$project->title}}</h3>
+                                                </a>
+                                                <div class="links my-3">
+                                                    <a href="{{$project->github}}" class="github text-white text-decoration-none me-2">
+                                                        <i class="fa-brands fa-github fa-xl"></i>
+                                                    </a>
+                                                    <a href="{{$project->url}}" class="url text-white text-decoration-none">
+                                                        <i class="fa-solid fa-link fa-xl"></i>
+                                                    </a>
+                                                </div>
+                                                <div class="project-tags mt-4 d-flex align-items-center justify-content-evenly flex-wrap">
+                                                    @foreach (explode(',', $project->tags) as $tags)
+                                                        <span class="p-1 rounded">{{$tags}}</span>
+                                                    @endforeach
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
                             @else
                                 <h1 class="text-center">No Projects to Show</h1>
                             @endif
@@ -163,7 +221,36 @@
                     <div class="tab-pane p-5 text-center fade" id="pills_fullstack" role="tabpanel" tabindex="0" aria-labelledby="pills_fullstack_tab">
                         <div class="row">
                             @if ($fullstackProjectsCount > 0)
-                                <h1 class="text-center">Project Found</h1>
+                                @foreach ($fullstackProjects as $project)
+                                    <div class="col-lg-4 col-md-6">
+                                        <div class="project-item rounded">
+                                            <div class="ribbon">
+                                                <span class="text-white text-center py-2 px-5">{{$project->category}}</span>
+                                            </div>
+                                            <div class="project-img">
+                                                <img src="{{asset('assets/imgs/projects/'.$project->img)}}" class="img-fluid" width="40px" alt="{{$project->title}}">
+                                            </div>
+                                            <div class="project-content p-3">
+                                                <a href="{{url("details/$project->id")}}" class="text-decoration-none text-white">
+                                                    <h3>{{$project->title}}</h3>
+                                                </a>
+                                                <div class="links my-3">
+                                                    <a href="{{$project->github}}" class="github text-white text-decoration-none me-2">
+                                                        <i class="fa-brands fa-github fa-xl"></i>
+                                                    </a>
+                                                    <a href="{{$project->url}}" class="url text-white text-decoration-none">
+                                                        <i class="fa-solid fa-link fa-xl"></i>
+                                                    </a>
+                                                </div>
+                                                <div class="project-tags mt-4 d-flex align-items-center justify-content-evenly flex-wrap">
+                                                    @foreach (explode(',', $project->tags) as $tags)
+                                                        <span class="p-1 rounded">{{$tags}}</span>
+                                                    @endforeach
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
                             @else
                                 <h1 class="text-center">No Projects to Show</h1>
                             @endif

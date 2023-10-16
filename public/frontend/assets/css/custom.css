@@ -182,6 +182,10 @@ h1,h2,h3,h4,h5,h6{
     text-transform: uppercase;
 }
 /* ! Project Details Page ! */
+/* ! Email Page ! */
+.email-logo img{
+    width: 150px;
+}
 /* ! Blogs Page ! */
 .blog-item{
     background-color: #1a5bd5 !important;

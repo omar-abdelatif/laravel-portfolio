@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers\frontend;
 
-use App\Http\Controllers\Controller;
 use App\Models\Blog;
-use App\Models\Information;
 use App\Models\Pages;
+use App\Mail\SendMail;
 use App\Models\Project;
 use App\Models\Service;
+use App\Models\Information;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Http\Controllers\Controller;
 
 class MasterController extends Controller
 {
@@ -90,5 +92,29 @@ class MasterController extends Controller
     public function errorPage()
     {
         return view('frontend.pages.errors');
+    }
+    public function sendEmail(Request $request)
+    {
+        $validated = $request->validate([
+            'name' => 'required|string',
+            'email' => 'required|email',
+            'subject' => 'required|string',
+            'phone' => 'required|integer',
+            'msg' => 'required'
+        ]);
+        $data = [
+            'name' => $validated['name'],
+            'email' => $validated['email'],
+            'subject' => $validated['subject'],
+            'phone' => $validated['phone'],
+            'msg' => $validated['msg'],
+        ];
+        $sent = Mail::to('omar.abdelatiif@gmail.com')->send(new SendMail($data));
+        if ($sent) {
+            dd('Email Sent Successfully');
+        } else {
+            dd('Error Happen While Sending');
+        }
+        // return view('emails.index');
     }
 }
