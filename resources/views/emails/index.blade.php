@@ -58,7 +58,7 @@
 <body>
     <div class="container">
         <div class="email-logo text-center">
-            <img src="https://raw.githubusercontent.com/omar-abdelatif/portfolio-v2/master/public/imgs/logo.webp" width="150" alt="">
+            <img src="https://raw.githubusercontent.com/omar-abdelatif/portfolio-v2/blob/master/public/imgs/logo.png" width="150" alt="">
         </div>
         <div class="email-container w-50 mx-auto bg-dark rounded p-5 my-3">
             <div class="email-header ms-3">

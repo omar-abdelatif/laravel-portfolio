@@ -4,7 +4,6 @@ namespace App\Http\Controllers\frontend;
 
 use App\Models\Blog;
 use App\Models\Pages;
-use App\Mail\SendMail;
 use App\Models\Project;
 use App\Models\Service;
 use App\Models\Information;

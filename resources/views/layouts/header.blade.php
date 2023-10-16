@@ -22,6 +22,7 @@
     <ul class="header-nav ms-3">
         <li class="nav-item dropdown">
             <a class="nav-link py-0 align-items-center" data-coreui-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                <img src="{{asset("assets/imgs/users/".Auth::user()->img)}}" class="rounded-circle" width="50" alt="{{Auth::user()->img}}">
                 {{ Auth::user()->name }}
             </a>
             <div class="dropdown-menu dropdown-menu-end pt-0">

@@ -34,7 +34,7 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('users', [\App\Http\Controllers\UserController::class, 'index'])->name('users.index');
         Route::get('profile', [\App\Http\Controllers\ProfileController::class, 'show'])->name('profile.show');
         Route::put('profile', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
-        Route::post('/update_img', [UserController::class, 'update'])->name('img.update');
+        Route::post('/update_img', [\App\Http\Controllers\UserController::class, 'update'])->name('img.update');
         //! Dashboard Routes
         Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
         //! Projects Routes
