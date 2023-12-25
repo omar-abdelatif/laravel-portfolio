@@ -44,13 +44,5 @@ class CategoryController extends Controller
             }
             return redirect()->route('categories.index')->withErrors('Error Happen');
         }
-        $category =  Category::find($request->id);
-        if ($category) {
-            $update = $category->update($request->all());
-            if ($update) {
-                return redirect()->route('categories.index')->withSuccess("Updated successfully");
-            }
-        }
-        return redirect()->route('categories.index')->withErrors('Error Happen');
     }
 }

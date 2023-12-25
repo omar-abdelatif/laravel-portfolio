@@ -78,15 +78,6 @@ class ProjectController extends Controller
     {
         $project =  Project::find($request->id);
         if ($project) {
-            $project->title = $request->title;
-            $project->description = $request->description;
-            $project->category = $request->category;
-            $project->tags = implode(',', $request->tags);
-            $project->github = $request->github;
-            $project->url = $request->url;
-            $update = $project->save();
-            if ($update)
-                return redirect()->route('projects.index')->withSuccess("Updated successfully");
             //! Delete Old Img
             if ($request->hasFile('img') && $project->img !== null) {
                 $oldPath = public_path('assets/imgs/projects/' . $project->img);

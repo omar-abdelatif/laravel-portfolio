@@ -98,7 +98,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="{{route('categories.destroy', $category->id)}}" class="btn btn-danger">
+                        <a href="{{route('admin.categories.destroy', $category->id)}}" class="btn btn-danger">
                             <i class="fa-solid fa-trash"></i>
                         </a>
                     </td>

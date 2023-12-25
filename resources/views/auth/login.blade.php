@@ -1,8 +1,8 @@
 @extends('layouts.guest')
 
 @section('content')
-    <div class="col-lg-8">
-        <div class="card-group d-block d-md-flex row">
+    <div class="col-lg-12">
+        <div class="card-group d-block d-md-flex row w-50 mx-auto">
             <div class="card col-md-7 p-4 mb-0">
                 <div class="card-body">
                     <h1>{{ __('Login') }}</h1>
@@ -31,37 +31,39 @@
                         </div>
                         <div class="row">
                             <div class="col-12">
-                                <div class="col-md-6">
-                                    <div class="form-check mb-3">
-                                        <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                        <label class="form-check-label" for="remember">
-                                            {{ __('Remember Me') }}
-                                        </label>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-check mb-3">
+                                            <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                                            <label class="form-check-label" for="remember">
+                                                {{ __('Remember Me') }}
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        @if (Route::has('password.request'))
+                                            <div class="text-end">
+                                                <a href="{{ route('password.request') }}" class="btn btn-link px-0 py-0" type="button">{{ __('Forgot Password?') }}</a>
+                                            </div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-6">
-                                <button class="btn btn-primary px-4" type="submit">{{ __('Login') }}</button>
+                            <div class="col-lg-12">
+                                <button class="btn btn-primary px-4 w-100" type="submit">{{ __('Login') }}</button>
                             </div>
-                            @if (Route::has('password.request'))
-                                <div class="col-6 text-end">
-                                    <a href="{{ route('password.request') }}" class="btn btn-link px-0" type="button">{{ __('Forgot Your Password?') }}</a>
-                                </div>
-                            @endif
                         </div>
                     </form>
                 </div>
             </div>
-            <div class="card col-md-5 text-white bg-primary py-5">
+            {{-- <div class="card col-md-5 text-white bg-primary py-5">
                 <div class="card-body text-center">
                     <div>
                         <h2>{{ __('Sign up') }}</h2>
-                        <a href="{{ route('register') }}"
-                            class="btn btn-lg btn-outline-light mt-3">{{ __('Register') }}</a>
+                        <a href="{{ route('register') }}" class="btn btn-lg btn-outline-light mt-3">{{ __('Register') }}</a>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 @endsection
